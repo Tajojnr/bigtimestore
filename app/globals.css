@@ -1,26 +1,116 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-orange: #e96525;
+  --color-brand-orange-bright: #ffb36b;
+  --color-brand-orange-dark: #c4511b;
+  --color-brand-orange-light: #fff1e9;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  background: #f7f7f4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-width: 320px;
+  margin: 0;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: #fed7aa;
+  color: #10243c;
+}
+
+.tech-text-letter {
+  opacity: 1;
+}
+
+.tech-text-letter-reveal {
+  animation: tech-text-reveal 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(var(--tech-letter-index) * 55ms);
+}
+
+.tech-text-intro {
+  animation-duration: var(--tech-intro-duration);
+}
+
+.tech-text-speck {
+  position: absolute;
+  z-index: 0;
+  top: var(--speck-top);
+  left: var(--speck-left);
+  width: 2px;
+  height: 2px;
+  border-radius: 9999px;
+  background: #ffbd83;
+  opacity: 0;
+  animation: tech-text-speck 2.4s ease-in-out infinite;
+  animation-delay: calc(var(--speck-index) * -170ms);
+  pointer-events: none;
+}
+
+.tech-text-kick svg {
+  animation: tech-text-kick 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tech-text-kick .tech-text-letter-reveal {
+  animation-name: tech-text-reveal;
+}
+
+@keyframes tech-text-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes tech-text-speck {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(3px) scale(0.6);
+  }
+  50% {
+    opacity: 0.65;
+    transform: translateY(-4px) scale(1);
+  }
+}
+
+@keyframes tech-text-kick {
+  0% {
+    transform: translateX(0);
+    filter: brightness(1);
+  }
+  35% {
+    transform: translateX(5px);
+    filter: brightness(1.7);
+  }
+  70% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
+    filter: brightness(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-text-letter-reveal,
+  .tech-text-intro,
+  .tech-text-speck,
+  .tech-text-kick svg {
+    animation: none;
+  }
 }

@@ -1,0 +1,24 @@
+{
+  "name": "Bigtime Online Store",
+  "short_name": "Bigtime Store",
+  "description": "Shop trusted tech, solar fans, POS equipment and more from Bigtime Online Store.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f7f4",
+  "theme_color": "#10243c",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
